@@ -1,0 +1,116 @@
+1. Qual é a principal diferença entre o processo de compilação em Java e o de linguagens C++?
+
+Em C++, a compilação é direta para código de máquina específico do sistema operacional e do processador onde o programa será executado. Isso significa que o arquivo gerado (normalmente um .exe no Windows ou binário no Linux) só funciona naquele sistema.
+
+Já em Java, a compilação é feita em duas etapas:
+
+O código-fonte (.java) é compilado para um código intermediário chamado bytecode (.class).
+
+Esse bytecode não é executado diretamente pelo sistema, mas sim pela Máquina Virtual Java (JVM), que o interpreta ou o compila em tempo de execução para o código de máquina da plataforma.
+Portanto, a principal diferença é:
+
+C++ → compilação nativa (dependente do sistema)
+
+Java → compilação para bytecode (independente do sistema, executado pela JVM)
+
+2. Explique o que acontece em cada uma das três fases de análise do compilador javac: Análise Léxica, Análise Sintática e Análise Semântica.
+
+Análise Léxica (Scanner):
+O código-fonte é lido como uma sequência de caracteres e transformado em tokens (unidades significativas como palavras-chave, identificadores, operadores, números, etc.).
+
+Exemplo: int x = 10; → tokens: int | x | = | 10 | ;.
+
+Análise Sintática (Parser):
+Os tokens são organizados segundo as regras gramaticais da linguagem para verificar se a estrutura do programa é válida. O compilador constrói uma árvore sintática (AST).
+
+Exemplo: int x = 10; → verifica se segue a sintaxe correta de declaração de variável.
+
+Análise Semântica:
+Verifica o significado do código. Confere se os tipos são compatíveis, se variáveis foram declaradas antes do uso, se métodos existem, etc.
+
+Exemplo: int x = "texto"; → erro semântico, pois tipos não são compatíveis.
+
+3. O que é o bytecode e qual é a sua principal função no processo de compilação do Java?
+
+O bytecode é um código intermediário gerado pelo compilador Java (javac) a partir do código-fonte .java.
+
+Ele é armazenado em arquivos .class.
+
+Sua função principal é tornar o programa independente de plataforma, permitindo que qualquer máquina com JVM consiga executá-lo, sem precisar recompilar o código para cada sistema operacional.
+Resumindo: é o “código universal” do Java.
+
+4. Qual é o papel da Máquina Virtual Java (JVM) na execução de um programa Java, e por que o arquivo ".class" não é executado diretamente pelo sistema operacional?
+
+A JVM (Java Virtual Machine) é responsável por:
+
+Ler o bytecode contido no arquivo .class.
+
+Interpretar ou compilar esse bytecode para instruções nativas do processador da máquina.
+
+Gerenciar recursos como memória, coleta de lixo (Garbage Collector), segurança e threads.
+
+O arquivo .class não pode ser executado diretamente pelo sistema operacional porque ele não contém código de máquina nativo, mas sim instruções do bytecode, que só a JVM entende.
+
+5. O que é o compilador JIT e como ele melhora o desempenho dos programas em Java?
+
+O JIT (Just-In-Time Compiler) é um compilador que faz parte da JVM.
+
+Ele atua em tempo de execução, pegando partes do bytecode que são usadas com frequência e convertendo-as para código de máquina nativo.
+
+Isso evita que a JVM precise interpretar as mesmas instruções repetidamente, melhorando a performance do programa.
+ Exemplo: se um loop é executado milhares de vezes, o JIT compila esse trecho de bytecode diretamente para máquina, acelerando a execução.
+
+Questões sobre Linguagens Formais em Java
+
+6. Qual é a aplicação mais comum e direta das linguagens formais em Java, e para que ela é utilizada?
+
+A aplicação mais comum é na definição e reconhecimento da sintaxe da linguagem Java.
+
+As linguagens formais (gramáticas, autômatos, expressões regulares) são usadas para descrever as regras de formação de programas válidos.
+ Exemplo: quando o compilador analisa se if (x > 0) { ... } está corretamente estruturado.
+
+7. No processo de compilação de um código Java, como as linguagens formais são usadas nas fases de Análise Léxica e Análise Sintática?
+
+Na Análise Léxica: usam-se expressões regulares (linguagens formais regulares) para identificar tokens como palavras-chave, identificadores e números.
+
+Na Análise Sintática: usam-se gramáticas livres de contexto (GLC) para estruturar esses tokens e verificar se a sequência segue as regras da linguagem.
+ Ou seja:
+
+Léxica = autômatos finitos e regex.
+
+Sintática = gramáticas e árvores sintáticas.
+
+8. O que é uma Máquina de Estado Finito (FSM) e como ela pode ser usada em Java?
+
+Uma FSM (Finite State Machine) é um modelo matemático que descreve um sistema como um conjunto de estados e transições entre eles baseadas em entradas.
+
+Em Java, FSM pode ser usada em:
+
+Validação de entradas (ex.: reconhecer números válidos).
+
+Processamento de protocolos de comunicação.
+
+Lógica de jogos (ex.: estados de um personagem: parado, correndo, pulando).
+
+Simulação do comportamento do scanner léxico.
+
+9. Como as linguagens formais se relacionam com os schemas de validação de documentos, como os usados para XML e JSON?
+
+Schemas (como DTD, XSD para XML ou JSON Schema para JSON) são baseados em linguagens formais que definem regras de estrutura e conteúdo.
+
+Eles especificam quais elementos podem aparecer, em qual ordem, quais tipos de dados são válidos etc.
+
+Assim como um compilador usa gramáticas para validar código, os validadores de XML/JSON usam gramáticas e autômatos para validar documentos.
+
+10. De acordo com o texto, qual é a principal utilidade de ferramentas como o ANTLR no contexto de linguagens formais em Java?
+
+O ANTLR (Another Tool for Language Recognition) é uma ferramenta usada para gerar analisadores léxicos e sintáticos a partir de gramáticas definidas pelo programador.
+
+No contexto do Java, sua principal utilidade é:
+
+Construir compiladores e interpretadores de linguagens.
+
+Processar DSLs (Domain Specific Languages).
+
+Criar validadores e transformadores de código.
+ Ele automatiza a parte mais trabalhosa do compilador: a análise léxica e sintática baseada em linguagens formais.
